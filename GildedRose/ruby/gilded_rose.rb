@@ -48,16 +48,20 @@ class GildedRose
 
   def decrease_quality_if_not_special(item)
     if item.quality > 0
-      if item.name != "Sulfuras, Hand of Ragnaros"
+      if special_item?(item)
         item.quality -= 1
       end
     end
   end
 
   def decrese_sell_in(item)
-    if item.name != "Sulfuras, Hand of Ragnaros"
+    if special_item?(item)
       item.sell_in -= 1
     end
+  end
+
+  def special_item?(item)
+    item.name != "Sulfuras, Hand of Ragnaros"
   end
 end
 
