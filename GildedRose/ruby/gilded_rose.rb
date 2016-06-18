@@ -25,7 +25,7 @@ class GildedRose
           end
         end
       else
-        decrease_quality_if_not_special(item)
+        decrease_quality(item)
       end
 
       decrese_sell_in(item)
@@ -33,7 +33,7 @@ class GildedRose
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            decrease_quality_if_not_special(item)
+            decrease_quality(item)
           else
             item.quality = 0
           end
@@ -46,7 +46,7 @@ class GildedRose
     end
   end
 
-  def decrease_quality_if_not_special(item)
+  def decrease_quality(item)
     if item.quality > 0
       if special_item?(item)
         item.quality -= 1
