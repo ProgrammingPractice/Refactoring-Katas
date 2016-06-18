@@ -38,8 +38,24 @@ end
 def write_gold_master
   result = run_program
   File.write('gold_master.txt', result)
+  puts "Gold Master recorded"
+end
+
+def run_test
+  actual   = run_program
+  expected = File.read('gold_master.txt')
+
+  if actual == expected
+    puts "OK"
+  else
+    puts "ERROR: test failed!"
+  end
 end
 
 if ARGV[0] == '--prepare'
   write_gold_master
+elsif ARGV[0] == '--test'
+  run_test
+else
+  puts "ERROR: unrecognized argument '#{ARGV[0]}'"
 end
