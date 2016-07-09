@@ -4,6 +4,8 @@
 
 require File.join(File.dirname(__FILE__), 'gilded_rose')
 
+GOLD_MASTER_PATH = 'fixtures/gold_master.txt'
+
 def run_program
   output = ""
 
@@ -37,13 +39,13 @@ end
 
 def write_gold_master
   result = run_program
-  File.write('gold_master.txt', result)
+  File.write(GOLD_MASTER_PATH, result)
   puts "Gold Master recorded"
 end
 
 def run_test
   actual   = run_program
-  expected = File.read('gold_master.txt')
+  expected = File.read(GOLD_MASTER_PATH)
 
   if actual == expected
     puts "OK"
