@@ -6,4 +6,4 @@
 
 ## TODO
 
-Continue with cleaning #update_quality
+Replace IF branches with polymorphic method calls.
