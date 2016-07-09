@@ -6,15 +6,17 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      decrese_sell_in(item)
-
-      if old_cheese?(item)
+      if sulfuras?(item)
+        # do nothing
+      elsif old_cheese?(item)
+        decrese_sell_in(item)
         increase_quality(item)
 
         if item.sell_in < 0
           increase_quality(item)
         end
       elsif concert_ticket?(item)
+        decrese_sell_in(item)
         increase_quality(item)
 
         if item.sell_in < 10
@@ -29,6 +31,7 @@ class GildedRose
           item.quality = 0
         end
       else
+        decrese_sell_in(item)
         decrease_quality(item)
 
         if item.sell_in < 0
@@ -45,17 +48,13 @@ class GildedRose
   end
 
   def decrease_quality(item)
-    if !sulfuras?(item)
-      if item.quality > 0
-        item.quality -= 1
-      end
+    if item.quality > 0
+      item.quality -= 1
     end
   end
 
   def decrese_sell_in(item)
-    if !sulfuras?(item)
-      item.sell_in -= 1
-    end
+    item.sell_in -= 1
   end
 
   def sulfuras?(item)
