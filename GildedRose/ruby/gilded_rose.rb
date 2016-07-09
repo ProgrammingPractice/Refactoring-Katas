@@ -10,11 +10,11 @@ class GildedRose
         increase_quality(item)
 
         if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          if item.sell_in < 11
+          if item.sell_in <= 10
             increase_quality(item)
           end
 
-          if item.sell_in < 6
+          if item.sell_in <= 5
             increase_quality(item)
           end
         end
@@ -25,14 +25,14 @@ class GildedRose
       decrese_sell_in(item)
 
       if item.sell_in < 0
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            decrease_quality(item)
-          else
-            item.quality = 0
-          end
-        else
+        if item.name == "Aged Brie"
           increase_quality(item)
+        else
+          if item.name == "Backstage passes to a TAFKAL80ETC concert"
+            item.quality = 0
+          else
+            decrease_quality(item)
+          end
         end
       end
     end
