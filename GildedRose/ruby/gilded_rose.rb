@@ -9,14 +9,14 @@ class GildedRose
       if sulfuras?(item)
         # do nothing
       elsif old_cheese?(item)
-        decrese_sell_in(item)
+        decrease_sell_in(item)
         increase_quality(item)
 
         if item.sell_in < 0
           increase_quality(item)
         end
       elsif concert_ticket?(item)
-        decrese_sell_in(item)
+        decrease_sell_in(item)
         increase_quality(item)
 
         if item.sell_in < 10
@@ -31,7 +31,7 @@ class GildedRose
           item.quality = 0
         end
       else
-        decrese_sell_in(item)
+        decrease_sell_in(item)
         decrease_quality(item)
 
         if item.sell_in < 0
@@ -53,7 +53,7 @@ class GildedRose
     end
   end
 
-  def decrese_sell_in(item)
+  def decrease_sell_in(item)
     item.sell_in -= 1
   end
 
