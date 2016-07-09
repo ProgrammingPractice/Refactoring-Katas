@@ -4,7 +4,7 @@ class GildedRose
     @items = items
   end
 
-  def update_quality()
+  def update_quality
     @items.each do |item|
       if item.name == "Aged Brie" || item.name == "Backstage passes to a TAFKAL80ETC concert"
         increase_quality(item)
@@ -72,7 +72,7 @@ class Item
     @quality = quality
   end
 
-  def to_s()
+  def to_s
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
