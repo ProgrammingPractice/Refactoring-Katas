@@ -30,6 +30,15 @@ class GildedRose
         if item.sell_in < 0
           item.quality = 0
         end
+      elsif conjured?(item)
+        decrease_sell_in(item)
+        decrease_quality(item)
+        decrease_quality(item)
+
+        if item.sell_in < 0
+          decrease_quality(item)
+          decrease_quality(item)
+        end
       else
         decrease_sell_in(item)
         decrease_quality(item)
@@ -67,6 +76,10 @@ class GildedRose
 
   def concert_ticket?(item)
     item.name == "Backstage passes to a TAFKAL80ETC concert"
+  end
+
+  def conjured?(item)
+    item.name == "Conjured Mana Cake"
   end
 end
 
