@@ -8,17 +8,17 @@ class GildedRose
     @items.each do |item|
       decrese_sell_in(item)
 
-      if old_cheese?(item) || concert_ticket?(item)
+      if old_cheese?(item)
+        increase_quality(item)
+      elsif concert_ticket?(item)
         increase_quality(item)
 
-        if concert_ticket?(item)
-          if item.sell_in < 10
-            increase_quality(item)
-          end
+        if item.sell_in < 10
+          increase_quality(item)
+        end
 
-          if item.sell_in < 5
-            increase_quality(item)
-          end
+        if item.sell_in < 5
+          increase_quality(item)
         end
       else
         decrease_quality(item)
