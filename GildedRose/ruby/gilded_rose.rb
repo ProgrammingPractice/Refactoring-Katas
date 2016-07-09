@@ -24,15 +24,19 @@ class GildedRose
         decrease_quality(item)
       end
 
-      if item.sell_in < 0
         if old_cheese?(item)
+          if item.sell_in < 0
           increase_quality(item)
+        end
         elsif concert_ticket?(item)
+          if item.sell_in < 0
           item.quality = 0
+        end
         else
+          if item.sell_in < 0
           decrease_quality(item)
         end
-      end
+        end
     end
   end
 
