@@ -6,10 +6,10 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      if item.name == "Aged Brie" || item.name == "Backstage passes to a TAFKAL80ETC concert"
+      if old_cheese?(item) || concert_ticket?(item)
         increase_quality(item)
 
-        if item.name == "Backstage passes to a TAFKAL80ETC concert"
+        if concert_ticket?(item)
           if item.sell_in <= 10
             increase_quality(item)
           end
@@ -25,10 +25,10 @@ class GildedRose
       decrese_sell_in(item)
 
       if item.sell_in < 0
-        if item.name == "Aged Brie"
+        if old_cheese?(item)
           increase_quality(item)
         else
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
+          if concert_ticket?(item)
             item.quality = 0
           else
             decrease_quality(item)
@@ -60,6 +60,14 @@ class GildedRose
 
   def special_item?(item)
     item.name == "Sulfuras, Hand of Ragnaros"
+  end
+
+  def old_cheese?(item)
+    item.name == "Aged Brie"
+  end
+
+  def concert_ticket?(item)
+    item.name == "Backstage passes to a TAFKAL80ETC concert"
   end
 end
 
