@@ -12,7 +12,7 @@ def run_program
   output << "OMGHAI!\n"
   items = [
     Item.new(name="+5 Dexterity Vest", sell_in=10, quality=20),
-    Item.new(name="Aged Brie", sell_in=2, quality=0),
+    OldCheeseItem.new(name="Aged Brie", sell_in=2, quality=0),
     Item.new(name="Elixir of the Mongoose", sell_in=5, quality=7),
     SulfurasItem.new(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
     SulfurasItem.new(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),

@@ -8,13 +8,8 @@ class GildedRose
     @items.each do |item|
       if item.is_a? SulfurasItem
         item.update_quality
-      elsif old_cheese?(item)
-        decrease_sell_in(item)
-        increase_quality(item)
-
-        if item.sell_in < 0
-          increase_quality(item)
-        end
+      elsif item.is_a? OldCheeseItem
+        item.update_quality
       elsif concert_ticket?(item)
         decrease_sell_in(item)
         increase_quality(item)
@@ -50,18 +45,21 @@ class GildedRose
     end
   end
 
+  # FIXME: this method is duplicated in Item class. Remove.
   def increase_quality(item)
     if item.quality < 50
       item.quality += 1
     end
   end
 
+  # FIXME: this method is duplicated in Item class. Remove.
   def decrease_quality(item)
     if item.quality > 0
       item.quality -= 1
     end
   end
 
+  # FIXME: this method is duplicated in Item class. Remove.
   def decrease_sell_in(item)
     item.sell_in -= 1
   end
@@ -95,10 +93,37 @@ class Item
   def to_s
     "#{@name}, #{@sell_in}, #{@quality}"
   end
+
+  def increase_quality
+    if quality < 50
+      self.quality += 1
+    end
+  end
+
+  # def decrease_quality
+  #   if quality > 0
+  #     self.quality -= 1
+  #   end
+  # end
+
+  def decrease_sell_in
+    self.sell_in -= 1
+  end
 end
 
 class SulfurasItem < Item
   def update_quality
-    # do nothing 
+    # do nothing
+  end
+end
+
+class OldCheeseItem < Item
+  def update_quality
+    decrease_sell_in
+    increase_quality
+
+    if sell_in < 0
+      increase_quality
+    end
   end
 end
