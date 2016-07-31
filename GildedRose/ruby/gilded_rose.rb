@@ -35,9 +35,7 @@ class Item
   private
 
   def increase_quality(amount)
-    if quality < 50
-      self.quality += amount
-    end
+    self.quality = [quality + amount, 50].min
   end
 
   def decrease_quality(amount)
@@ -70,18 +68,15 @@ end
 class ConcertTicketItem < Item
   def update_quality
     decrease_sell_in
-    increase_quality(1)
-
-    if sell_in < 10
-      increase_quality(1)
-    end
-
-    if sell_in < 5
-      increase_quality(1)
-    end
 
     if sell_in < 0
       self.quality = 0
+    elsif sell_in < 5
+      increase_quality(3)
+    elsif sell_in < 10
+      increase_quality(2)
+    else
+      increase_quality(1)
     end
   end
 end
