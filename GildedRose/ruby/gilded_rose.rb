@@ -24,22 +24,25 @@ class Item
 
   def update_quality
     decrease_sell_in
-    decrease_quality
 
     if sell_in < 0
-      decrease_quality
+      decrease_quality(2)
+    else
+      decrease_quality(1)
     end
   end
 
-  def increase_quality
+  private
+
+  def increase_quality(amount)
     if quality < 50
-      self.quality += 1
+      self.quality += amount
     end
   end
 
-  def decrease_quality
+  def decrease_quality(amount)
     if quality > 0
-      self.quality -= 1
+      self.quality -= amount
     end
   end
 
@@ -57,10 +60,11 @@ end
 class OldCheeseItem < Item
   def update_quality
     decrease_sell_in
-    increase_quality
 
     if sell_in < 0
-      increase_quality
+      increase_quality(2)
+    else
+      increase_quality(1)
     end
   end
 end
@@ -68,14 +72,14 @@ end
 class ConcertTicketItem < Item
   def update_quality
     decrease_sell_in
-    increase_quality
+    increase_quality(1)
 
     if sell_in < 10
-      increase_quality
+      increase_quality(1)
     end
 
     if sell_in < 5
-      increase_quality
+      increase_quality(1)
     end
 
     if sell_in < 0
@@ -87,12 +91,12 @@ end
 class ConjuredItem < Item
   def update_quality
     decrease_sell_in
-    decrease_quality
-    decrease_quality
+    decrease_quality(1)
+    decrease_quality(1)
 
     if sell_in < 0
-      decrease_quality
-      decrease_quality
+      decrease_quality(1)
+      decrease_quality(1)
     end
   end
 end
