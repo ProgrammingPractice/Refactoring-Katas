@@ -19,7 +19,7 @@ def run_program
     ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
     ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
     ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
-    Item.new(name="Conjured Mana Cake", sell_in=3, quality=25),
+    ConjuredItem.new(name="Conjured Mana Cake", sell_in=3, quality=25),
   ]
 
   gilded_rose = GildedRose.new items
