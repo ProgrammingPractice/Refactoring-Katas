@@ -1,4 +1,3 @@
-
 class GildedRose
   def initialize(items)
     @items = items
