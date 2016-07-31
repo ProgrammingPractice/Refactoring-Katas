@@ -5,19 +5,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each do |item|
-      if item.is_a? SulfurasItem
-        item.update_quality
-      elsif item.is_a? OldCheeseItem
-        item.update_quality
-      elsif item.is_a? ConcertTicketItem
-        item.update_quality
-      elsif item.is_a? ConjuredItem
-        item.update_quality
-      else
-        item.update_quality
-      end
-    end
+    @items.each(&:update_quality)
   end
 
   # FIXME: this method is duplicated in Item class. Remove.
