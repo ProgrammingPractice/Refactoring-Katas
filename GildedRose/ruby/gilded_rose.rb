@@ -41,9 +41,7 @@ class Item
   end
 
   def decrease_quality(amount)
-    if quality > 0
-      self.quality -= amount
-    end
+    self.quality = [quality - amount, 0].max
   end
 
   def decrease_sell_in
@@ -91,12 +89,11 @@ end
 class ConjuredItem < Item
   def update_quality
     decrease_sell_in
-    decrease_quality(1)
-    decrease_quality(1)
 
     if sell_in < 0
-      decrease_quality(1)
-      decrease_quality(1)
+      decrease_quality(4)
+    else
+      decrease_quality(2)
     end
   end
 end
