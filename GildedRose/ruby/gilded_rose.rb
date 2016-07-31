@@ -15,12 +15,7 @@ class GildedRose
       elsif item.is_a? ConjuredItem
         item.update_quality
       else
-        decrease_sell_in(item)
-        decrease_quality(item)
-
-        if item.sell_in < 0
-          decrease_quality(item)
-        end
+        item.update_quality
       end
     end
   end
@@ -72,6 +67,15 @@ class Item
 
   def to_s
     "#{@name}, #{@sell_in}, #{@quality}"
+  end
+
+  def update_quality
+    decrease_sell_in
+    decrease_quality
+
+    if sell_in < 0
+      decrease_quality
+    end
   end
 
   def increase_quality
