@@ -30,7 +30,7 @@ def run_program
       output << item.to_s << "\n"
     end
     output << "\n"
-    gilded_rose.update_quality
+    gilded_rose.update_inventory
   end
 
   output
