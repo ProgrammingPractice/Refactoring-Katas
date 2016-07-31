@@ -6,8 +6,8 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      if sulfuras?(item)
-        # do nothing
+      if item.is_a? SulfurasItem
+        item.update_quality
       elsif old_cheese?(item)
         decrease_sell_in(item)
         increase_quality(item)
@@ -94,5 +94,11 @@ class Item
 
   def to_s
     "#{@name}, #{@sell_in}, #{@quality}"
+  end
+end
+
+class SulfurasItem < Item
+  def update_quality
+    # do nothing 
   end
 end
