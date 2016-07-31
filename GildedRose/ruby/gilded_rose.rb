@@ -10,21 +10,8 @@ class GildedRose
         item.update_quality
       elsif item.is_a? OldCheeseItem
         item.update_quality
-      elsif concert_ticket?(item)
-        decrease_sell_in(item)
-        increase_quality(item)
-
-        if item.sell_in < 10
-          increase_quality(item)
-        end
-
-        if item.sell_in < 5
-          increase_quality(item)
-        end
-
-        if item.sell_in < 0
-          item.quality = 0
-        end
+      elsif item.is_a? ConcertTicketItem
+        item.update_quality
       elsif conjured?(item)
         decrease_sell_in(item)
         decrease_quality(item)
@@ -124,6 +111,25 @@ class OldCheeseItem < Item
 
     if sell_in < 0
       increase_quality
+    end
+  end
+end
+
+class ConcertTicketItem < Item
+  def update_quality
+    decrease_sell_in
+    increase_quality
+
+    if sell_in < 10
+      increase_quality
+    end
+
+    if sell_in < 5
+      increase_quality
+    end
+
+    if sell_in < 0
+      self.quality = 0
     end
   end
 end

@@ -16,9 +16,9 @@ def run_program
     Item.new(name="Elixir of the Mongoose", sell_in=5, quality=7),
     SulfurasItem.new(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
     SulfurasItem.new(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
-    Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
-    Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
-    Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
+    ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
+    ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
+    ConcertTicketItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
     Item.new(name="Conjured Mana Cake", sell_in=3, quality=25),
   ]
 
