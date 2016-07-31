@@ -7,41 +7,6 @@ class GildedRose
   def update_quality
     @items.each(&:update_quality)
   end
-
-  # FIXME: this method is duplicated in Item class. Remove.
-  def increase_quality(item)
-    if item.quality < 50
-      item.quality += 1
-    end
-  end
-
-  # FIXME: this method is duplicated in Item class. Remove.
-  def decrease_quality(item)
-    if item.quality > 0
-      item.quality -= 1
-    end
-  end
-
-  # FIXME: this method is duplicated in Item class. Remove.
-  def decrease_sell_in(item)
-    item.sell_in -= 1
-  end
-
-  def sulfuras?(item)
-    item.name == "Sulfuras, Hand of Ragnaros"
-  end
-
-  def old_cheese?(item)
-    item.name == "Aged Brie"
-  end
-
-  def concert_ticket?(item)
-    item.name == "Backstage passes to a TAFKAL80ETC concert"
-  end
-
-  def conjured?(item)
-    item.name == "Conjured Mana Cake"
-  end
 end
 
 class Item
