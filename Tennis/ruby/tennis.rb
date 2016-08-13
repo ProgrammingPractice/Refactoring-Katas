@@ -18,31 +18,31 @@ class TennisGame1
   
   def score
     result = ""
-    tempScore=0
-    if (@p1points==@p2points)
+    tempScore = 0
+    if (@p1points == @p2points)
       result = {
-          0 => "Love-All",
+          0 => "Love-All", 
           1 => "Fifteen-All",
           2 => "Thirty-All",
           3 => "Forty-All",
       }.fetch(@p1points, "Deuce")
-    elsif (@p1points>=4 or @p2points>=4)
-      minusResult = @p1points-@p2points
-      if (minusResult==1)
-        result ="Advantage " + @player1Name
-      elsif (minusResult ==-1)
-        result ="Advantage " + @player2Name
-      elsif (minusResult>=2)
+    elsif (@p1points >= 4 || @p2points >= 4)
+      minusResult = @p1points - @p2points
+      if (minusResult == 1)
+        result = "Advantage " + @player1Name
+      elsif (minusResult == -1)
+        result = "Advantage " + @player2Name
+      elsif (minusResult >= 2)
         result = "Win for " + @player1Name
       else
-        result ="Win for " + @player2Name
+        result = "Win for " + @player2Name
       end
     else
       (1...3).each do |i|
-        if (i==1)
+        if (i == 1)
           tempScore = @p1points
         else
-          result+="-"
+          result += "-"
           tempScore = @p2points
         end
         result += {
