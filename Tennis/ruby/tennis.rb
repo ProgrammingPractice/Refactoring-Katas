@@ -22,36 +22,50 @@ class TennisGame1
   end
 
   def score
-    tie_score || advantage_or_win_score || temporary_score
+    if @p1_points == @p2_points
+      tie_score(@p1_points)
+    else
+      different_score
+    end
   end
 
   private
 
-  def tie_score
-    if (@p1_points == @p2_points)
-      if @p1_points <= 3
-        SCORE_NAMES[@p1_points] + '-All'
-      else
-        "Deuce"
-      end
+  def tie_score(points)
+    if points <= 3
+      SCORE_NAMES[points] + '-All'
+    else
+      "Deuce"
     end
   end
 
-  def advantage_or_win_score
-    if (@p1_points >= 4 || @p2_points >= 4)
+  def different_score
+    difference = (@p1_points - @p2_points).abs
+    max_points = [@p1_points, @p2_points].max
+
+    if max_points >= 4
       if @p1_points > @p2_points
         leader = @p1_name
       else
         leader = @p2_name
       end
 
-      difference = (@p1_points - @p2_points).abs
       if difference == 1
-        "Advantage " + leader
+        advantage_score(leader)
       else
-        "Win for " + leader
+        win_score(leader)
       end
+    else
+      temporary_score
     end
+  end
+
+  def advantage_score(leader)
+    "Advantage " + leader
+  end
+
+  def win_score(leader)
+    "Win for " + leader
   end
 
   def temporary_score
