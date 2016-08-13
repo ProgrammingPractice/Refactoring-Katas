@@ -11,3 +11,7 @@ Contents so far:
 - Yahtzee Kata in C#, Java, C++ and Python (the C#, C++ and Java versions are also available in Jon Jagger's Cyberdojo, see [his blog post](http://jonjagger.blogspot.co.uk/2012/05/yahtzee-cyber-dojo-refactoring-in-java.html))
 
 For more information about these and other katas, you may be interested in my book [The Coding Dojo Handbook](http://leanpub.com/codingdojohandbook)
+
+## TODO
+
+- Next session: Review Tennis kata version 1, then move to version 2.
