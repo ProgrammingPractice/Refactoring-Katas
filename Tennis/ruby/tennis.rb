@@ -1,13 +1,11 @@
-
 class TennisGame1
-
   def initialize(player1Name, player2Name)
     @player1Name = player1Name
     @player2Name = player2Name
     @p1points = 0
     @p2points = 0
   end
-        
+
   def won_point(playerName)
     if playerName == @player1Name
       @p1points += 1
@@ -15,11 +13,11 @@ class TennisGame1
       @p2points += 1
     end
   end
-  
+
   def score
     if (@p1points == @p2points)
       result = {
-          0 => "Love-All", 
+          0 => "Love-All",
           1 => "Fifteen-All",
           2 => "Thirty-All",
           3 => "Forty-All",
@@ -39,7 +37,7 @@ class TennisGame1
       tempScore = 0
       result = ""
 
-      (1...3).each do |i|
+      [1, 2].each do |i|
         if (i == 1)
           tempScore = @p1points
         else
