@@ -36,15 +36,17 @@ class TennisGame1
   end
 
   def advantage_or_win_score
-    minusResult = @p1points - @p2points
-    if (minusResult == 1)
-      "Advantage " + @player1Name
-    elsif (minusResult == -1)
-      "Advantage " + @player2Name
-    elsif (minusResult >= 2)
-      "Win for " + @player1Name
+    if @p1points > @p2points
+      leader = @player1Name
     else
-      "Win for " + @player2Name
+      leader = @player2Name
+    end
+
+    difference = (@p1points - @p2points).abs
+    if difference == 1
+      "Advantage " + leader
+    else
+      "Win for " + leader
     end
   end
 
