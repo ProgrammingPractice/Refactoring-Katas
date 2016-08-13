@@ -16,42 +16,56 @@ class TennisGame1
 
   def score
     if (@p1points == @p2points)
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-          3 => "Forty-All",
-      }.fetch(@p1points, "Deuce")
+      tie_score
     elsif (@p1points >= 4 || @p2points >= 4)
-      minusResult = @p1points - @p2points
-      if (minusResult == 1)
-        result = "Advantage " + @player1Name
-      elsif (minusResult == -1)
-        result = "Advantage " + @player2Name
-      elsif (minusResult >= 2)
-        result = "Win for " + @player1Name
-      else
-        result = "Win for " + @player2Name
-      end
+      advantage_or_win_score
     else
-      tempScore = 0
-      result = ""
+      temporary_score
+    end
+  end
 
-      [1, 2].each do |i|
-        if (i == 1)
-          tempScore = @p1points
-        else
-          result << "-"
-          tempScore = @p2points
-        end
+  private
 
-        result << {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-        }[tempScore]
+  def tie_score
+    {
+      0 => "Love-All",
+      1 => "Fifteen-All",
+      2 => "Thirty-All",
+      3 => "Forty-All",
+    }.fetch(@p1points, "Deuce")
+  end
+
+  def advantage_or_win_score
+    minusResult = @p1points - @p2points
+    if (minusResult == 1)
+      "Advantage " + @player1Name
+    elsif (minusResult == -1)
+      "Advantage " + @player2Name
+    elsif (minusResult >= 2)
+      "Win for " + @player1Name
+    else
+      "Win for " + @player2Name
+    end
+  end
+
+  def temporary_score
+    tempScore = 0
+    result = ""
+
+    [1, 2].each do |i|
+      if (i == 1)
+        tempScore = @p1points
+      else
+        result << "-"
+        tempScore = @p2points
       end
+
+      result << {
+          0 => "Love",
+          1 => "Fifteen",
+          2 => "Thirty",
+          3 => "Forty",
+      }[tempScore]
     end
 
     result
