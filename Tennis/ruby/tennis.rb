@@ -57,21 +57,7 @@ class TennisGame1
   end
 
   def temporary_score
-    temporary_score = 0
-    result = ""
-
-    [1, 2].each do |i|
-      if (i == 1)
-        temporary_score = @p1_points
-      else
-        result << "-"
-        temporary_score = @p2_points
-      end
-
-      result << SCORE_NAMES[temporary_score]
-    end
-
-    result
+    SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
   end
 end
 
