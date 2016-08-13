@@ -1,4 +1,11 @@
 class TennisGame1
+  SCORE_NAMES = {
+    0 => "Love",
+    1 => "Fifteen",
+    2 => "Thirty",
+    3 => "Forty",
+  }
+
   def initialize(p1_name, p2_name)
     @p1_name = p1_name
     @p2_name = p2_name
@@ -27,12 +34,11 @@ class TennisGame1
   private
 
   def tie_score
-    {
-      0 => "Love-All",
-      1 => "Fifteen-All",
-      2 => "Thirty-All",
-      3 => "Forty-All",
-    }.fetch(@p1_points, "Deuce")
+    if @p1_points <= 3
+      SCORE_NAMES[@p1_points] + '-All'
+    else
+      "Deuce"
+    end
   end
 
   def advantage_or_win_score
@@ -62,12 +68,7 @@ class TennisGame1
         temporary_score = @p2_points
       end
 
-      result << {
-          0 => "Love",
-          1 => "Fifteen",
-          2 => "Thirty",
-          3 => "Forty",
-      }[temporary_score]
+      result << SCORE_NAMES[temporary_score]
     end
 
     result
