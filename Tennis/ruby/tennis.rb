@@ -93,9 +93,7 @@ class TennisGame2
         "Deuce"
       end
     else
-      p1res = ""
-      p2res = ""
-      if (@p1_points == 0 || @p2_points == 0) || (@p1_points < 4 && @p2_points < 4) 
+      if (@p1_points == 0 || @p2_points == 0) || (@p1_points < 4 && @p2_points < 4)
         p1res = SCORE_NAMES[@p1_points] || ""
         p2res = SCORE_NAMES[@p2_points] || ""
 
