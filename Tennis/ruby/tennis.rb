@@ -117,14 +117,7 @@ class TennisGame2
       result = p1res + "-" + p2res
     end
 
-    if @p1_points > @p2_points && @p1_points < 4
-      p1res = SCORE_NAMES[@p1_points]
-      p2res = SCORE_NAMES[@p2_points]
-
-      result = p1res + "-" + p2res
-    end
-
-    if @p2_points > @p1_points && @p2_points < 4
+    if (@p2_points != @p1_points) && (@p1_points < 4 && @p2_points < 4)
       p1res = SCORE_NAMES[@p1_points]
       p2res = SCORE_NAMES[@p2_points]
 
