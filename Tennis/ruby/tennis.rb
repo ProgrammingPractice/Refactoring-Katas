@@ -88,56 +88,56 @@ class TennisGame2
   def score
     if @p1_points == @p2_points
       if @p1_points < 4
-        return SCORE_NAMES[@p1_points] + "-All"
+        SCORE_NAMES[@p1_points] + "-All"
       else
-        return "Deuce"
+        "Deuce"
       end
-    end
+    else
+      p1res = ""
+      p2res = ""
+      if @p1_points > 0 && @p2_points == 0
+        if @p1_points < 4
+          p1res = SCORE_NAMES[@p1_points]
+        end
 
-    p1res = ""
-    p2res = ""
-    if @p1_points > 0 && @p2_points == 0
-      if @p1_points < 4
+        p2res = SCORE_NAMES[0]
+        result = p1res + "-" + p2res
+      end
+
+      if @p2_points > 0 && @p1_points == 0
+        if @p2_points < 4
+          p2res = SCORE_NAMES[@p2_points]
+        end
+
+        p1res = SCORE_NAMES[0]
+        result = p1res + "-" + p2res
+      end
+
+      if (@p2_points != @p1_points) && (@p1_points < 4 && @p2_points < 4)
         p1res = SCORE_NAMES[@p1_points]
-      end
-
-      p2res = SCORE_NAMES[0]
-      result = p1res + "-" + p2res
-    end
-
-    if @p2_points > 0 && @p1_points == 0
-      if @p2_points < 4
         p2res = SCORE_NAMES[@p2_points]
+
+        result = p1res + "-" + p2res
       end
 
-      p1res = SCORE_NAMES[0]
-      result = p1res + "-" + p2res
+      if @p1_points > @p2_points && @p2_points >= 3
+        result = "Advantage " + @p1_name
+      end
+
+      if @p2_points > @p1_points && @p1_points >= 3
+        result = "Advantage " + @p2_name
+      end
+
+      if @p1_points >= 4 && @p2_points >= 0 && (@p1_points - @p2_points) >= 2
+        result = "Win for " + @p1_name
+      end
+
+      if @p2_points >= 4 && @p1_points >= 0 && (@p2_points - @p1_points) >= 2
+        result = "Win for " + @p2_name
+      end
+
+      result
     end
-
-    if (@p2_points != @p1_points) && (@p1_points < 4 && @p2_points < 4)
-      p1res = SCORE_NAMES[@p1_points]
-      p2res = SCORE_NAMES[@p2_points]
-
-      result = p1res + "-" + p2res
-    end
-
-    if @p1_points > @p2_points && @p2_points >= 3
-      result = "Advantage " + @p1_name
-    end
-
-    if @p2_points > @p1_points && @p1_points >= 3
-      result = "Advantage " + @p2_name
-    end
-
-    if @p1_points >= 4 && @p2_points >= 0 && (@p1_points - @p2_points) >= 2
-      result = "Win for " + @p1_name
-    end
-
-    if @p2_points >= 4 && @p1_points >= 0 && (@p2_points - @p1_points) >= 2
-      result = "Win for " + @p2_name
-    end
-
-    result
   end
 end
 
