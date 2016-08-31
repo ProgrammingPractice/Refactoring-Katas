@@ -63,6 +63,13 @@ class TennisGame1
 end
 
 class TennisGame2
+  SCORE_NAMES = {
+    0 => 'Love',
+    1 => 'Fifteen',
+    2 => 'Thirty',
+    3 => 'Forty'
+  }
+
   def initialize(p1_name, p2_name)
     @p1_name   = p1_name
     @p2_name   = p2_name
@@ -82,22 +89,7 @@ class TennisGame2
     result = ""
 
     if @p1_points == @p2_points && @p1_points < 4
-      if @p1_points == 0
-        result = "Love"
-      end
-
-      if @p1_points == 1
-        result = "Fifteen"
-      end
-
-      if @p1_points == 2
-        result = "Thirty"
-      end
-
-      if @p1_points == 3
-        result = "Forty"
-      end
-
+      result = SCORE_NAMES[@p1_points]
       result += "-All"
     end
 
@@ -108,16 +100,8 @@ class TennisGame2
     p1res = ""
     p2res = ""
     if @p1_points > 0 && @p2_points == 0
-      if @p1_points == 1
-        p1res = "Fifteen"
-      end
-
-      if @p1_points == 2
-        p1res = "Thirty"
-      end
-
-      if @p1_points == 3
-        p1res = "Forty"
+      if @p1_points < 4
+        p1res = SCORE_NAMES[@p1_points]
       end
 
       p2res = "Love"
@@ -125,16 +109,8 @@ class TennisGame2
     end
 
     if @p2_points > 0 && @p1_points == 0
-      if @p2_points == 1
-        p2res = "Fifteen"
-      end
-
-      if @p2_points == 2
-        p2res = "Thirty"
-      end
-
-      if @p2_points == 3
-        p2res = "Forty"
+      if @p2_points < 4
+        p2res = SCORE_NAMES[@p2_points]
       end
 
       p1res = "Love"
@@ -142,41 +118,15 @@ class TennisGame2
     end
 
     if @p1_points > @p2_points && @p1_points < 4
-      if @p1_points == 2
-        p1res = "Thirty"
-      end
-
-      if @p1_points == 3
-        p1res = "Forty"
-      end
-
-      if @p2_points == 1
-        p2res = "Fifteen"
-      end
-
-      if @p2_points == 2
-        p2res = "Thirty"
-      end
+      p1res = SCORE_NAMES[@p1_points]
+      p2res = SCORE_NAMES[@p2_points]
 
       result = p1res + "-" + p2res
     end
 
     if @p2_points > @p1_points && @p2_points < 4
-      if @p2_points == 2
-        p2res = "Thirty"
-      end
-
-      if @p2_points == 3
-        p2res = "Forty"
-      end
-
-      if @p1_points == 1
-        p1res = "Fifteen"
-      end
-
-      if @p1_points == 2
-        p1res = "Thirty"
-      end
+      p1res = SCORE_NAMES[@p1_points]
+      p2res = SCORE_NAMES[@p2_points]
 
       result = p1res + "-" + p2res
     end
