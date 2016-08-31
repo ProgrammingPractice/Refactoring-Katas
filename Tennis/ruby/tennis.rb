@@ -86,15 +86,12 @@ class TennisGame2
   end
 
   def score
-    result = ""
-
-    if @p1_points == @p2_points && @p1_points < 4
-      result = SCORE_NAMES[@p1_points]
-      result += "-All"
-    end
-
-    if @p1_points == @p2_points && @p1_points > 3
-      result = "Deuce"
+    if @p1_points == @p2_points
+      if @p1_points < 4
+        return SCORE_NAMES[@p1_points] + "-All"
+      else
+        return "Deuce"
+      end
     end
 
     p1res = ""
