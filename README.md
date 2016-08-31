@@ -14,4 +14,4 @@ For more information about these and other katas, you may be interested in my bo
 
 ## TODO
 
-- Next session: Review Tennis kata version 1, then move to version 2.
+- Next session: Minimize boolean expresion on line :113
