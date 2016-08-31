@@ -104,7 +104,7 @@ class TennisGame2
         p1res = SCORE_NAMES[@p1_points]
       end
 
-      p2res = "Love"
+      p2res = SCORE_NAMES[0]
       result = p1res + "-" + p2res
     end
 
@@ -113,7 +113,7 @@ class TennisGame2
         p2res = SCORE_NAMES[@p2_points]
       end
 
-      p1res = "Love"
+      p1res = SCORE_NAMES[0]
       result = p1res + "-" + p2res
     end
 
