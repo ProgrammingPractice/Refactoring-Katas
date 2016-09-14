@@ -63,12 +63,17 @@ class TennisGame1
 end
 
 class TennisGame2
-  SCORE_NAMES = {
+  SIMPLE_SCORE_NAMES = {
     0 => 'Love',
     1 => 'Fifteen',
     2 => 'Thirty',
     3 => 'Forty'
   }
+
+  SPECIAL_SCORE_NAMES = Hash.new("Win for ").merge(
+    0 => "Deuce",
+    1 => "Advantage "
+  )
 
   def initialize(p1_name, p2_name)
     @p1_name   = p1_name
@@ -91,19 +96,16 @@ class TennisGame2
 
     if leader_points < 4
       if difference == 0
-        SCORE_NAMES[@p1_points] + "-All"
+        SIMPLE_SCORE_NAMES[@p1_points] + "-" + "All"
       else
-        SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
+        SIMPLE_SCORE_NAMES[@p1_points] + "-" + SIMPLE_SCORE_NAMES[@p2_points]
       end
     else
-      difference_names = Hash.new("Win for ").merge(
-        0 => "Deuce",
-        1 => "Advantage "
-      )
-
-      difference_names[difference] + leader_name
+      SPECIAL_SCORE_NAMES[difference] + leader_name
     end
   end
+
+  private
 
   def leader_name
     if @p1_points == @p2_points
