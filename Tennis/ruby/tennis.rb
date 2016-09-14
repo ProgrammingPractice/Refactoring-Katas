@@ -96,14 +96,14 @@ class TennisGame2
         SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
       end
     else
+      difference_names = Hash.new("Win for ").merge(
+        0 => "Deuce",
+        1 => "Advantage "
+      )
 
-      if difference == 0
-        "Deuce"
-      elsif difference == 1
-        "Advantage " + leader_name
-      else
-        "Win for " + leader_name
-      end
+      difference_names[difference] + leader_name
+    end
+  end
 
   def leader_name
     if @p1_points == @p2_points
