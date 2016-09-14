@@ -110,8 +110,7 @@ class TennisGame2
 
       leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
-      if @p1_points >= 4 && @p1_points > @p2_points && (@p1_points - @p2_points).abs >= 2 ||
-       @p2_points >= 4 && @p2_points > @p1_points && (@p2_points - @p1_points).abs >= 2
+      if (@p1_points - @p2_points).abs >= 2 && (@p1_points >= 4 || @p2_points >= 4)
         result = "Win for " + leader_name
       end
 
