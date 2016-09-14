@@ -99,7 +99,7 @@ class TennisGame2
 
       if difference >= 2 && (@p1_points >= 4 || @p2_points >= 4)
         "Win for " + leader_name
-      elsif difference >= 1 && @p1_points >= 3 && @p2_points >= 3
+      elsif difference == 1 && (@p1_points >= 4 || @p2_points >= 4)
         "Advantage " + leader_name
       else
         p1res = SCORE_NAMES[@p1_points] || ""
