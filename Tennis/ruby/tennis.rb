@@ -89,14 +89,10 @@ class TennisGame2
     difference = (@p1_points - @p2_points).abs
     leader_points = [@p1_points, @p2_points].max
 
-    if difference == 0
-      if leader_points < 4
-        SCORE_NAMES[@p1_points] + "-All"
-      else
+    if leader_points >= 4
+      if difference == 0
         "Deuce"
-      end
-    else
-      if leader_points >= 4
+      else
         leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
         if difference >= 2
@@ -104,6 +100,10 @@ class TennisGame2
         elsif difference == 1
           "Advantage " + leader_name
         end
+      end
+    else
+      if difference == 0
+        SCORE_NAMES[@p1_points] + "-All"
       else
         SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
       end
