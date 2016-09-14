@@ -97,10 +97,12 @@ class TennisGame2
 
       difference = (@p1_points - @p2_points).abs
 
-      if difference >= 2 && (@p1_points >= 4 || @p2_points >= 4)
-        "Win for " + leader_name
-      elsif difference == 1 && (@p1_points >= 4 || @p2_points >= 4)
-        "Advantage " + leader_name
+      if @p1_points >= 4 || @p2_points >= 4
+        if difference >= 2
+          "Win for " + leader_name
+        elsif difference == 1
+          "Advantage " + leader_name
+        end
       else
         p1res = SCORE_NAMES[@p1_points] || ""
         p2res = SCORE_NAMES[@p2_points] || ""
