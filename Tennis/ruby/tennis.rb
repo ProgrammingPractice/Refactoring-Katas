@@ -96,7 +96,6 @@ class TennisGame2
         SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
       end
     else
-      leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
       if difference == 0
         "Deuce"
@@ -105,6 +104,12 @@ class TennisGame2
       else
         "Win for " + leader_name
       end
+
+  def leader_name
+    if @p1_points == @p2_points
+      ""
+    else
+      @p1_points > @p2_points ? @p1_name : @p2_name
     end
   end
 end
