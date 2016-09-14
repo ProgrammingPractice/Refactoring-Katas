@@ -86,18 +86,18 @@ class TennisGame2
   end
 
   def score
-    if @p1_points == @p2_points
+    difference = (@p1_points - @p2_points).abs
+
+    if difference == 0
       if @p1_points < 4
         SCORE_NAMES[@p1_points] + "-All"
       else
         "Deuce"
       end
     else
-      leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
-
-      difference = (@p1_points - @p2_points).abs
-
       if @p1_points >= 4 || @p2_points >= 4
+        leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
+
         if difference >= 2
           "Win for " + leader_name
         elsif difference == 1
