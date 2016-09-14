@@ -100,15 +100,15 @@ class TennisGame2
         result = p1res + "-" + p2res
       end
 
+      leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
+
       if @p1_points > @p2_points && @p2_points >= 3
-        result = "Advantage " + @p1_name
+        result = "Advantage " + leader_name
       end
 
       if @p2_points > @p1_points && @p1_points >= 3
-        result = "Advantage " + @p2_name
+        result = "Advantage " + leader_name
       end
-
-      leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
       if (@p1_points - @p2_points).abs >= 2 && (@p1_points >= 4 || @p2_points >= 4)
         result = "Win for " + leader_name
