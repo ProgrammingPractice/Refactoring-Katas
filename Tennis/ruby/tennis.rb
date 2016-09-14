@@ -93,19 +93,17 @@ class TennisGame2
         "Deuce"
       end
     else
-      if (@p1_points == 0 || @p2_points == 0) || (@p1_points < 4 && @p2_points < 4)
-        p1res = SCORE_NAMES[@p1_points] || ""
-        p2res = SCORE_NAMES[@p2_points] || ""
-
-        result = p1res + "-" + p2res
-      end
-
       leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
       if (@p1_points - @p2_points).abs >= 2 && (@p1_points >= 4 || @p2_points >= 4)
         result = "Win for " + leader_name
       elsif (@p1_points > @p2_points && @p2_points >= 3) || (@p2_points > @p1_points && @p1_points >= 3)
         result = "Advantage " + leader_name
+      elsif (@p1_points == 0 || @p2_points == 0) || (@p1_points < 4 && @p2_points < 4)
+        p1res = SCORE_NAMES[@p1_points] || ""
+        p2res = SCORE_NAMES[@p2_points] || ""
+
+        result = p1res + "-" + p2res
       end
 
       result
