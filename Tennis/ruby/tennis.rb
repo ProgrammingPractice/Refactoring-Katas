@@ -102,11 +102,7 @@ class TennisGame2
 
       leader_name = @p1_points > @p2_points ? @p1_name : @p2_name
 
-      if @p1_points > @p2_points && @p2_points >= 3
-        result = "Advantage " + leader_name
-      end
-
-      if @p2_points > @p1_points && @p1_points >= 3
+      if (@p1_points > @p2_points && @p2_points >= 3) || (@p2_points > @p1_points && @p1_points >= 3)
         result = "Advantage " + leader_name
       end
 
