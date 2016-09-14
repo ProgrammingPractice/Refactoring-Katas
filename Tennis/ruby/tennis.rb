@@ -104,10 +104,7 @@ class TennisGame2
           "Advantage " + leader_name
         end
       else
-        p1res = SCORE_NAMES[@p1_points] || ""
-        p2res = SCORE_NAMES[@p2_points] || ""
-
-        p1res + "-" + p2res
+        SCORE_NAMES[@p1_points] + "-" + SCORE_NAMES[@p2_points]
       end
     end
   end
