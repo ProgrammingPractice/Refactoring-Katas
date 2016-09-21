@@ -184,6 +184,6 @@ class TennisGame4
   end
 
   def score
-    "WIP"
+    'Love-All'
   end
 end
