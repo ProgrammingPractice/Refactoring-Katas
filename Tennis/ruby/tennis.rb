@@ -154,9 +154,9 @@ class TennisGame3
       if @p1.score == @p2.score
         "Deuce"
       else
-        leader = @p1.score > @p2.score ? @p1.name : @p2.name
+        leader = @p1.score > @p2.score ? @p1 : @p2
         prefix = (@p1.score - @p2.score).abs == 1 ? "Advantage " : "Win for "
-        prefix + leader
+        prefix + leader.name
       end
     end
   end
