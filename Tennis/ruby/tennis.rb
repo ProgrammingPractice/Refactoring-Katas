@@ -145,19 +145,29 @@ class TennisGame3
   end
 
   def score
-    if @p1.score < 4 && @p2.score < 4
-      score_names = ["Love", "Fifteen", "Thirty", "Forty"]
-      left  = score_names[@p1.score]
-      right = @p1.score == @p2.score ? "All" : score_names[@p2.score]
-      left + '-' + right
+    if [@p1.score, @p2.score].max < 4
+      low_score
     else
-      if @p1.score == @p2.score
-        "Deuce"
-      else
-        leader = @p1.score > @p2.score ? @p1 : @p2
-        prefix = (@p1.score - @p2.score).abs == 1 ? "Advantage " : "Win for "
-        prefix + leader.name
-      end
+      high_score
+    end
+  end
+
+  private
+
+  def low_score
+    score_names = ["Love", "Fifteen", "Thirty", "Forty"]
+    left  = score_names[@p1.score]
+    right = @p1.score == @p2.score ? "All" : score_names[@p2.score]
+    left + '-' + right
+  end
+
+  def high_score
+    if @p1.score == @p2.score
+      "Deuce"
+    else
+      leader = @p1.score > @p2.score ? @p1 : @p2
+      prefix = (@p1.score - @p2.score).abs == 1 ? "Advantage " : "Win for "
+      prefix + leader.name
     end
   end
 end
