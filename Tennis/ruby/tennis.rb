@@ -117,33 +117,45 @@ class TennisGame2
 end
 
 class TennisGame3
+  class Player
+    attr_reader :name
+    attr_reader :score
+
+    def initialize(name)
+      @name  = name
+      @score = 0
+    end
+
+    def won_point
+      @score += 1
+    end
+  end
+
   def initialize(p1_name, p2_name)
-    @p1_name  = p1_name
-    @p2_name  = p2_name
-    @p1_score = 0
-    @p2_score = 0
+    @p1 = Player.new(p1_name)
+    @p2 = Player.new(p2_name)
   end
 
   def won_point(name)
-    if name == @p1_name
-      @p1_score += 1
+    if name == @p1.name
+      @p1.won_point
     else
-      @p2_score += 1
+      @p2.won_point
     end
   end
 
   def score
-    if @p1_score < 4 && @p2_score < 4
+    if @p1.score < 4 && @p2.score < 4
       score_names = ["Love", "Fifteen", "Thirty", "Forty"]
-      left  = score_names[@p1_score]
-      right = @p1_score == @p2_score ? "All" : score_names[@p2_score]
+      left  = score_names[@p1.score]
+      right = @p1.score == @p2.score ? "All" : score_names[@p2.score]
       left + '-' + right
     else
-      if @p1_score == @p2_score
+      if @p1.score == @p2.score
         "Deuce"
       else
-        leader = @p1_score > @p2_score ? @p1_name : @p2_name
-        prefix = (@p1_score - @p2_score).abs == 1 ? "Advantage " : "Win for "
+        leader = @p1.score > @p2.score ? @p1.name : @p2.name
+        prefix = (@p1.score - @p2.score).abs == 1 ? "Advantage " : "Win for "
         prefix + leader
       end
     end
