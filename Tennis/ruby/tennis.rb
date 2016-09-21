@@ -166,8 +166,12 @@ class TennisGame3
       "Deuce"
     else
       leader = @p1.score > @p2.score ? @p1 : @p2
-      prefix = (@p1.score - @p2.score).abs == 1 ? "Advantage " : "Win for "
+      prefix = advantage_difference? ? "Advantage " : "Win for "
       prefix + leader.name
     end
+  end
+
+  def advantage_difference?
+    (@p1.score - @p2.score).abs == 1
   end
 end
