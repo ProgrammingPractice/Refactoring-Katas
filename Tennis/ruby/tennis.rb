@@ -142,8 +142,9 @@ class TennisGame3
       if @p1S == @p2S
         "Deuce"
       else
-        s = @p1S > @p2S ? @p1N : @p2N
-        (@p1S - @p2S) * (@p1S - @p2S) == 1 ? "Advantage " + s : "Win for " + s
+        leader = @p1S > @p2S ? @p1N : @p2N
+        prefix = (@p1S - @p2S).abs == 1 ? "Advantage " : "Win for "
+        prefix + leader
       end
     end
   end
