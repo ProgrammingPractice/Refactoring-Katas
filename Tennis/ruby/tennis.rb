@@ -175,3 +175,15 @@ class TennisGame3
     (@p1.score - @p2.score).abs == 1
   end
 end
+
+class TennisGame4
+  def initialize(p1_name, p2_name)
+  end
+
+  def won_point(name)
+  end
+
+  def score
+    "WIP"
+  end
+end

@@ -63,23 +63,27 @@ class TestTennis < Test::Unit::TestCase
   end
 
   def test_Score_Game1
-    TEST_CASES.each do |testcase|
-      (p1Points, p2Points, score, p1Name, p2Name) = testcase
-      game = play_game(TennisGame1, p1Points, p2Points, p1Name, p2Name)
-      assert_equal(score, game.score())
-    end
+    run_tests(TennisGame1)
   end
+
   def test_Score_Game2
-    TEST_CASES.each do |testcase|
-      (p1Points, p2Points, score, p1Name, p2Name) = testcase
-      game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
-      assert_equal(score, game.score())
-    end
+    run_tests(TennisGame2)
   end
+
   def test_Score_Game3
+    run_tests(TennisGame3)
+  end
+
+  def test_Score_Game4
+    # run_tests(TennisGame4)
+  end
+
+  private
+
+  def run_tests(klass)
     TEST_CASES.each do |testcase|
       (p1Points, p2Points, score, p1Name, p2Name) = testcase
-      game = play_game(TennisGame3, p1Points, p2Points, p1Name, p2Name)
+      game = play_game(klass, p1Points, p2Points, p1Name, p2Name)
       assert_equal(score, game.score())
     end
   end
