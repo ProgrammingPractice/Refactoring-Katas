@@ -124,8 +124,8 @@ class TennisGame3
     @p2S = 0
   end
       
-  def won_point(n)
-    if n == @p1N
+  def won_point(name)
+    if name == @p1N
       @p1S += 1
     else
       @p2S += 1
@@ -134,9 +134,9 @@ class TennisGame3
   
   def score
     if @p1S < 4 && @p2S < 4
-      p = ["Love", "Fifteen", "Thirty", "Forty"]
-      s = p[@p1S]
-      @p1S == @p2S ? s + "-All" : s + "-" + p[@p2S]
+      score_name = ["Love", "Fifteen", "Thirty", "Forty"]
+      s = score_name[@p1S]
+      @p1S == @p2S ? s + "-All" : s + "-" + score_name[@p2S]
     else
       if @p1S == @p2S
         "Deuce"
