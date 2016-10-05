@@ -178,12 +178,40 @@ end
 
 class TennisGame4
   def initialize(p1_name, p2_name)
+    @p1_name   = p1_name
+    @p2_name   = p2_name
+    @p1_points = 0
+    @p2_points = 0
   end
 
   def won_point(name)
+    if name == @p1_name
+      @p1_points += 1
+    else
+      @p2_points += 1
+    end
   end
 
   def score
-    'Love-All'
+    scores = {
+      0 => 'Love',
+      1 => 'Fifteen',
+      2 => 'Thirty',
+      3 => 'Forty'
+    }
+
+    if @p1_points == @p2_points
+      if @p1_points == 4
+        'Deuce'
+      else
+        scores[@p1_points] + '-' + 'All'
+      end
+    else
+      if @p1_points == 4
+        "Win for " + @p1_name
+      else
+        scores[@p1_points] + '-' + scores[@p2_points]
+      end
+    end
   end
 end

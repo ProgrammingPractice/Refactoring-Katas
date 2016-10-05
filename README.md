@@ -14,5 +14,5 @@ For more information about these and other katas, you may be interested in my bo
 
 ## TODO
 
-- Next session: Review TennisGame2 implementation then refactor TennisGame3 then
-Write TennisScore4 from scratch
+- Next session: Continue implementation from scratch
+
