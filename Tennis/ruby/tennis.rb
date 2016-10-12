@@ -201,14 +201,14 @@ class TennisGame4
     }
 
     if @p1_points == @p2_points
-      if @p1_points == 4
+      if @p1_points >= 4
         'Deuce'
       else
         scores[@p1_points] + '-' + 'All'
       end
     else
-      if @p1_points == 4
-        if @p2_points <= 2
+      if @p1_points >= 4
+        if @p1_points - @p2_points >= 2
           'Win for ' + @p1_name
         else
           'Advantage ' + @p1_name
