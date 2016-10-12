@@ -20,10 +20,13 @@ class TestTennisGame4 < Test::Unit::TestCase
     expect_score(3, 2, 'Forty-Thirty')
     expect_score(3, 3, 'Forty-All')
 
-    expect_score(4, 4, 'Deuce')
-
     expect_score(4, 0, 'Win for Name 1')
+    expect_score(4, 1, 'Win for Name 1')
+    expect_score(4, 2, 'Win for Name 1')
+
     expect_score(4, 3, 'Advantage Name 1')
+
+    expect_score(4, 4, 'Deuce')
   end
 
   private
