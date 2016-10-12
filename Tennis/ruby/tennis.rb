@@ -207,11 +207,19 @@ class TennisGame4
         scores[@p1_points] + '-' + 'All'
       end
     else
-      if @p1_points >= 4
-        if @p1_points - @p2_points >= 2
-          'Win for ' + @p1_name
+      if @p1_points >= 4 || @p2_points >=4
+        if @p1_points > @p2_points
+          if @p1_points - @p2_points >= 2
+            'Win for ' + @p1_name
+          else
+            'Advantage ' + @p1_name
+          end
         else
-          'Advantage ' + @p1_name
+          if @p2_points - @p1_points >= 2
+            'Win for ' + @p2_name
+          else
+            'Advantage ' + @p2_name
+          end
         end
       else
         scores[@p1_points] + '-' + scores[@p2_points]

@@ -24,10 +24,20 @@ class TestTennisGame4 < Test::Unit::TestCase
     expect_score(4, 1, 'Win for Name 1')
     expect_score(4, 2, 'Win for Name 1')
     expect_score(4, 3, 'Advantage Name 1')
+
+    expect_score(0, 4, 'Win for Name 2')
+    expect_score(1, 4, 'Win for Name 2')
+    expect_score(2, 4, 'Win for Name 2')
+    expect_score(3, 4, 'Advantage Name 2')
+
     expect_score(4, 4, 'Deuce')
 
     expect_score(5, 3, 'Win for Name 1')
     expect_score(5, 4, 'Advantage Name 1')
+
+    expect_score(3, 5, 'Win for Name 2')
+    expect_score(4, 5, 'Advantage Name 2')
+
     expect_score(5, 5, 'Deuce')
 
     expect_score(6, 5, 'Advantage Name 1')
