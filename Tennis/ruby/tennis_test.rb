@@ -75,7 +75,7 @@ class TestTennis < Test::Unit::TestCase
   end
 
   def test_Score_Game4
-    # run_tests(TennisGame4)
+    run_tests(TennisGame4)
   end
 
   private

@@ -7,41 +7,31 @@ class TestTennisGame4 < Test::Unit::TestCase
     expect_score(0, 1, 'Love-Fifteen')
     expect_score(0, 2, 'Love-Thirty')
     expect_score(0, 3, 'Love-Forty')
+    expect_score(0, 4, 'Win for Name 2')
     expect_score(1, 0, 'Fifteen-Love')
     expect_score(1, 1, 'Fifteen-All')
     expect_score(1, 2, 'Fifteen-Thirty')
     expect_score(1, 3, 'Fifteen-Forty')
+    expect_score(1, 4, 'Win for Name 2')
     expect_score(2, 0, 'Thirty-Love')
     expect_score(2, 1, 'Thirty-Fifteen')
     expect_score(2, 2, 'Thirty-All')
     expect_score(2, 3, 'Thirty-Forty')
+    expect_score(2, 4, 'Win for Name 2')
     expect_score(3, 0, 'Forty-Love')
     expect_score(3, 1, 'Forty-Fifteen')
     expect_score(3, 2, 'Forty-Thirty')
     expect_score(3, 3, 'Forty-All')
-
+    expect_score(3, 4, 'Advantage Name 2')
     expect_score(4, 0, 'Win for Name 1')
     expect_score(4, 1, 'Win for Name 1')
     expect_score(4, 2, 'Win for Name 1')
     expect_score(4, 3, 'Advantage Name 1')
-
-    expect_score(0, 4, 'Win for Name 2')
-    expect_score(1, 4, 'Win for Name 2')
-    expect_score(2, 4, 'Win for Name 2')
-    expect_score(3, 4, 'Advantage Name 2')
-
     expect_score(4, 4, 'Deuce')
 
-    expect_score(5, 3, 'Win for Name 1')
-    expect_score(5, 4, 'Advantage Name 1')
-
-    expect_score(3, 5, 'Win for Name 2')
-    expect_score(4, 5, 'Advantage Name 2')
-
-    expect_score(5, 5, 'Deuce')
-
-    expect_score(6, 5, 'Advantage Name 1')
-    expect_score(6, 6, 'Deuce')
+    expect_score(7, 6, 'Advantage Name 1')
+    expect_score(7, 7, 'Deuce')
+    expect_score(7, 9, 'Win for Name 2')
   end
 
   private
