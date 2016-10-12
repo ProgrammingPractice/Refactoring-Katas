@@ -208,7 +208,11 @@ class TennisGame4
       end
     else
       if @p1_points == 4
-        "Win for " + @p1_name
+        if @p2_points <= 2
+          'Win for ' + @p1_name
+        else
+          'Advantage ' + @p1_name
+        end
       else
         scores[@p1_points] + '-' + scores[@p2_points]
       end
