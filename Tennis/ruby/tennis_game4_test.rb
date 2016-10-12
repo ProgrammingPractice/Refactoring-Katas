@@ -2,80 +2,29 @@ require File.join(File.dirname(__FILE__), 'tennis')
 require 'test/unit'
 
 class TestTennisGame4 < Test::Unit::TestCase
-  def setup
-    @game = TennisGame4.new('Name 1', 'Name 2')
-  end
-
-  def test_initial_score_is_love_all
-    expect_score('Love-All')
-  end
-
-  def test_player_one_has_one_point_is_fifteen_love
-    player_won_points('Name 1', 1)
-    expect_score('Fifteen-Love')
-  end
-
-  def test_player_two_has_one_point_is_love_fifteen
-    player_won_points('Name 2', 1)
-    expect_score('Love-Fifteen')
-  end
-
-  def test_player_one_has_two_points_is_thirty_love
-    player_won_points('Name 1', 2)
-    expect_score('Thirty-Love')
-  end
-
-  def test_player_two_has_two_points_is_love_thirty
-    player_won_points('Name 2', 2)
-    expect_score('Love-Thirty')
-  end
-
-  def test_player_one_has_three_points_is_forty_love
-    player_won_points('Name 1', 3)
-    expect_score('Forty-Love')
-  end
-
-  def test_player_two_has_three_points_is_love_forty
-    player_won_points('Name 2', 3)
-    expect_score('Love-Forty')
-  end
-
-  def test_both_players_have_one_point_is_fifteen_all
-    player_won_points('Name 1', 1)
-    player_won_points('Name 2', 1)
-    expect_score('Fifteen-All')
-  end
-
-  def test_player_one_has_two_points_player_two_one_point_is_thirty_fifteen
-    player_won_points('Name 1', 2)
-    player_won_points('Name 2', 1)
-    expect_score('Thirty-Fifteen')
-  end
-
-  def test_both_players_have_four_points_is_deuce
-    player_won_points('Name 1', 4)
-    player_won_points('Name 2', 4)
-    expect_score('Deuce')
-  end
-
-  def test_player_one_has_four_point_player_two_zero_point_is_player_one_win
-    player_won_points('Name 1', 4)
-    expect_score('Win for Name 1')
-  end
-
-  def test_player_one_has_four_point_player_two_three_point_is_advantage_player_one
-    player_won_points('Name 1', 4)
-    player_won_points('Name 2', 3)
-    expect_score('Advantage Name 1')
+  def test_score
+    expect_score(0, 0, 'Love-All')
+    expect_score(1, 0, 'Fifteen-Love')
+    expect_score(0, 1, 'Love-Fifteen')
+    expect_score(2, 0, 'Thirty-Love')
+    expect_score(0, 2, 'Love-Thirty')
+    expect_score(3, 0, 'Forty-Love')
+    expect_score(0, 3, 'Love-Forty')
+    expect_score(1, 1, 'Fifteen-All')
+    expect_score(2, 1, 'Thirty-Fifteen')
+    expect_score(4, 4, 'Deuce')
+    expect_score(4, 0, 'Win for Name 1')
+    expect_score(4, 3, 'Advantage Name 1')
   end
 
   private
 
-  def player_won_points(name, count)
-    count.times { @game.won_point(name) }
-  end
+  def expect_score(p1_points, p2_points, result)
+    game = TennisGame4.new('Name 1', 'Name 2')
 
-  def expect_score(expected)
-    assert_equal(expected, @game.score)
+    p1_points.times { game.won_point('Name 1') }
+    p2_points.times { game.won_point('Name 2') }
+
+    assert_equal(result, game.score)
   end
 end
