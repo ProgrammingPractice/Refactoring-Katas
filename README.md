@@ -14,5 +14,4 @@ For more information about these and other katas, you may be interested in my bo
 
 ## TODO
 
-- Next session: Continue implementation from scratch
-
+- Next session: Implement Yahtzee from scratch.
