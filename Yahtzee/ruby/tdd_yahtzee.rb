@@ -1,9 +1,7 @@
-class Yahtzee
-  def score
-    0
-  end
+module Yahtzee
+  extend self
 
-  def calculate_score(roll, category)
+  def chance(roll)
     roll.reduce(:+)
   end
 end
