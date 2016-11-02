@@ -10,10 +10,16 @@ module Yahtzee
   end
 
   def ones(roll)
-    roll.select { |e| e == 1 }.reduce(0, :+)
+    sum_matching(roll, 1)
   end
 
   def twos(roll)
-    0
+    sum_matching(roll, 2)
+  end
+
+  private
+
+  def sum_matching(collection, match)
+    collection.select { |e| e == match }.reduce(0, :+)
   end
 end
