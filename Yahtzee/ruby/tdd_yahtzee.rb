@@ -29,6 +29,10 @@ module Yahtzee
     sum_matching(roll, 5)
   end
 
+  def sixes(roll)
+    sum_matching(roll, 6)
+  end
+
   private
 
   def sum_matching(collection, match)
