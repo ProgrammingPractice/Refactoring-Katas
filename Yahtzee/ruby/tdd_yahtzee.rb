@@ -34,7 +34,8 @@ module Yahtzee
   end
 
   def pair(roll)
-    0
+    twos = roll.select { |e| e == 2 }
+    twos.size == 2 ? 4 : 0
   end
 
   private
