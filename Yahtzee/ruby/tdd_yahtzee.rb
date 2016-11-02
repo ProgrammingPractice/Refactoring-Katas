@@ -34,10 +34,10 @@ module Yahtzee
   end
 
   def pair(roll)
-    (1..6).each do |dice|
-      same_dice = roll.select { |e| e == dice }
+    6.downto(1) do |i|
+      same_dice = roll.select { |e| e == i }
       if same_dice.size == 2
-        return 2 * dice
+        return 2 * i
       end
     end
 

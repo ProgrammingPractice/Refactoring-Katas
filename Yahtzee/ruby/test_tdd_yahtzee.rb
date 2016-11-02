@@ -51,9 +51,10 @@ class TddYahtzeeTest < Test::Unit::TestCase
   end
 
   def test_pair
-    assert_equal 0, Yahtzee.pair([2,3,4,5,6])
-    assert_equal 0, Yahtzee.pair([2,2,2,2,6])
-    assert_equal 4, Yahtzee.pair([2,2,4,5,6])
-    assert_equal 2, Yahtzee.pair([1,2,3,4,1])
+    assert_equal 0,  Yahtzee.pair([2,3,4,5,6])
+    assert_equal 0,  Yahtzee.pair([2,2,2,2,6])
+    assert_equal 2,  Yahtzee.pair([1,2,3,4,1])
+    assert_equal 4,  Yahtzee.pair([2,2,4,5,6])
+    assert_equal 12, Yahtzee.pair([1,1,6,6,5])
   end
 end
