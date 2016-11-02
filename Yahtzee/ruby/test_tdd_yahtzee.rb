@@ -49,4 +49,8 @@ class TddYahtzeeTest < Test::Unit::TestCase
     assert_equal 6,  Yahtzee.sixes([2,3,4,5,6])
     assert_equal 18, Yahtzee.sixes([4,6,6,6,4])
   end
+
+  def test_pair
+    assert_equal 0, Yahtzee.pair([2,3,4,5,6])
+  end
 end
