@@ -31,4 +31,10 @@ class TddYahtzeeTest < Test::Unit::TestCase
     assert_equal 3, Yahtzee.threes([2,3,4,5,6])
     assert_equal 9, Yahtzee.threes([2,3,3,3,6])
   end
+
+  def test_fours
+    assert_equal 0,  Yahtzee.fours([2,2,3,5,6])
+    assert_equal 4,  Yahtzee.fours([2,3,4,5,6])
+    assert_equal 12, Yahtzee.fours([4,3,4,3,4])
+  end
 end
