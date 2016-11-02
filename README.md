@@ -14,4 +14,4 @@ For more information about these and other katas, you may be interested in my bo
 
 ## TODO
 
-- Next session: Implement Yahtzee from scratch.
+- Next session: continue with Yahtzee TDD. Next method is: two_pairs.
