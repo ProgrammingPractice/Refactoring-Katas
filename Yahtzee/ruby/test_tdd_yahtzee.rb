@@ -2,43 +2,27 @@ require_relative 'tdd_yahtzee'
 require 'test/unit'
 
 class TddYahtzeeTest < Test::Unit::TestCase
-  def test_chance_with_roll_11111
-    assert Yahtzee.chance([1,1,1,1,1]) == 5
+  def test_chance
+    assert_equal 5,  Yahtzee.chance([1,1,1,1,1])
+    assert_equal 15, Yahtzee.chance([1,2,3,4,5])
+    assert_equal 30, Yahtzee.chance([6,6,6,6,6])
   end
 
-  def test_chance_with_roll_12345
-    assert Yahtzee.chance([1,2,3,4,5]) == 15
-  end
-
-  def test_chance_with_roll_66666
-    assert Yahtzee.chance([6,6,6,6,6]) == 30
-  end
-
-  def test_yahtzee_with_all_the_same
+  def test_yahtzee
+    assert_equal 0,  Yahtzee.yahtzee([2,2,4,2,2])
     assert_equal 50, Yahtzee.yahtzee([2,2,2,2,2])
+    assert_equal 50, Yahtzee.yahtzee([5,5,5,5,5])
   end
 
-  def test_yahtzee_with_at_least_one_different
-    assert_equal 0, Yahtzee.yahtzee([2,2,4,2,2])
-  end
-
-  def test_ones_with_no_ones
+  def test_ones
     assert_equal 0, Yahtzee.ones([2,2,2,2,2])
-  end
-
-  def test_ones_with_three_ones
     assert_equal 3, Yahtzee.ones([1,2,2,1,1])
+    assert_equal 5, Yahtzee.ones([1,1,1,1,1])
   end
 
-  def test_twos_with_no_twos
+  def test_twos
     assert_equal 0, Yahtzee.twos([1,1,1,1,1])
-  end
-
-  def test_twos_with_one_two
     assert_equal 2, Yahtzee.twos([1,2,1,1,1])
-  end
-
-  def test_twos_with_four_twos
     assert_equal 8, Yahtzee.twos([1,2,2,2,2])
   end
 end
