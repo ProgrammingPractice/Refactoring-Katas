@@ -17,6 +17,10 @@ module Yahtzee
     sum_matching(roll, 2)
   end
 
+  def threes(roll)
+    sum_matching(roll, 3)
+  end
+
   private
 
   def sum_matching(collection, match)
