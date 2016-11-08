@@ -43,6 +43,11 @@ module Yahtzee
     pairs.size == 2 ? (pairs[0] + pairs[1]) * 2 : 0
   end
 
+  def three_of_a_kind(roll)
+    threes = find_threes(roll)
+    threes.size == 0 ? 0 : threes[0] * 3
+  end
+
   private
 
   def sum_matching(collection, match)
@@ -52,6 +57,12 @@ module Yahtzee
   def find_pairs(roll)
     (1..6).select do |i|
       roll.count(i) == 2
+    end
+  end
+
+  def find_threes(roll)
+    (1..6).select do |i|
+      roll.count(i) == 3
     end
   end
 end
