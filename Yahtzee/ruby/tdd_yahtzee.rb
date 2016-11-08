@@ -34,28 +34,12 @@ module Yahtzee
   end
 
   def pair(roll)
-    pairs = []
-
-    6.downto(1) do |i|
-      same_dice = roll.select { |e| e == i }
-      if same_dice.size == 2
-        pairs << 2 * i
-      end
-    end
-
+    pairs = find_pairs(roll)
     pairs.empty? ? 0 : pairs[0]
   end
 
   def two_pairs(roll)
-    pairs = []
-
-    6.downto(1) do |i|
-      same_dice = roll.select { |e| e == i }
-      if same_dice.size == 2
-        pairs << 2 * i
-      end
-    end
-
+    pairs = find_pairs(roll)
     pairs.size == 2 ? pairs[0] + pairs[1] : 0
   end
 
@@ -63,5 +47,18 @@ module Yahtzee
 
   def sum_matching(collection, match)
     collection.select { |e| e == match }.reduce(0, :+)
+  end
+
+  def find_pairs(roll)
+    pairs = []
+
+    6.downto(1) do |i|
+      same_dice = roll.select { |e| e == i }
+      if same_dice.size == 2
+        pairs << 2 * i
+      end
+    end
+
+    pairs
   end
 end
