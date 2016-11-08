@@ -76,4 +76,16 @@ class TddYahtzeeTest < Test::Unit::TestCase
     assert_equal 0, Yahtzee.four_of_a_kind([2,2,2,2,2])
     assert_equal 8, Yahtzee.four_of_a_kind([2,2,2,2,4])
   end
+
+  def test_small_straight
+    assert_equal 0,  Yahtzee.small_straight([2,3,4,5,6])
+    assert_equal 15, Yahtzee.small_straight([5,4,3,2,1])
+    assert_equal 15, Yahtzee.small_straight([1,2,3,4,5])
+  end
+
+  def test_large_straight
+    assert_equal 0,  Yahtzee.large_straight([1,2,3,4,5])
+    assert_equal 20, Yahtzee.large_straight([6,5,4,3,2])
+    assert_equal 20, Yahtzee.large_straight([2,3,4,5,6])
+  end
 end

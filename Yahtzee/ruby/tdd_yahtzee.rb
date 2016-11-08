@@ -53,6 +53,14 @@ module Yahtzee
     quadruples.size == 1 ? quadruples[0] * 4 : 0
   end
 
+  def small_straight(roll)
+    roll.sort == [1,2,3,4,5] ? 15 : 0
+  end
+
+  def large_straight(roll)
+    roll.sort == [2,3,4,5,6] ? 20 : 0
+  end
+
   private
 
   def sum_matching(collection, match)
