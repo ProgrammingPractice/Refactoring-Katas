@@ -44,6 +44,21 @@ module Yahtzee
     0
   end
 
+  def two_pairs(roll)
+    sum = 0
+    count = 0
+
+    6.downto(1) do |i|
+      same_dice = roll.select { |e| e == i }
+      if same_dice.size == 2
+        sum += 2 * i
+        count += 1
+      end
+    end
+
+    count == 2 ? sum : 0
+  end
+
   private
 
   def sum_matching(collection, match)
