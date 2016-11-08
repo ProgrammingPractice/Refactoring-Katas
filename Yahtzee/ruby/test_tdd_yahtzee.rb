@@ -88,4 +88,13 @@ class TddYahtzeeTest < Test::Unit::TestCase
     assert_equal 20, Yahtzee.large_straight([6,5,4,3,2])
     assert_equal 20, Yahtzee.large_straight([2,3,4,5,6])
   end
+
+  def test_full_house
+    assert_equal 0, Yahtzee.full_house([1,2,3,4,5])
+    assert_equal 0, Yahtzee.full_house([1,1,2,3,4])
+    assert_equal 0, Yahtzee.full_house([1,1,2,2,3])
+    assert_equal 0, Yahtzee.full_house([1,1,1,2,3])
+    assert_equal 0, Yahtzee.full_house([4,4,4,4,4])
+    assert_equal 8, Yahtzee.full_house([1,1,2,2,2])
+  end
 end

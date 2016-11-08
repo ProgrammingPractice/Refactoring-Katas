@@ -61,6 +61,17 @@ module Yahtzee
     roll.sort == [2,3,4,5,6] ? 20 : 0
   end
 
+  def full_house(roll)
+    pair            = pair(roll)
+    three_of_a_kind = three_of_a_kind(roll)
+
+    if pair > 0 && three_of_a_kind > 0
+      pair + three_of_a_kind
+    else
+      0
+    end
+  end
+
   private
 
   def sum_matching(collection, match)
