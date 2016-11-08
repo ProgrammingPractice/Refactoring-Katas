@@ -44,8 +44,8 @@ module Yahtzee
   end
 
   def three_of_a_kind(roll)
-    threes = find_threes(roll)
-    threes.size == 1 ? threes[0] * 3 : 0
+    triples = find_triples(roll)
+    triples.size == 1 ? triples[0] * 3 : 0
   end
 
   private
@@ -58,7 +58,7 @@ module Yahtzee
     dice_repeated(2, roll)
   end
 
-  def find_threes(roll)
+  def find_triples(roll)
     dice_repeated(3, roll)
   end
 
