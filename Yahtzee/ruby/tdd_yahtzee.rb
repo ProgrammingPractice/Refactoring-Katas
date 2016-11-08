@@ -48,6 +48,11 @@ module Yahtzee
     triples.size == 1 ? triples[0] * 3 : 0
   end
 
+  def four_of_a_kind(roll)
+    quadruples = find_quadruples(roll)
+    quadruples.size == 1 ? quadruples[0] * 4 : 0
+  end
+
   private
 
   def sum_matching(collection, match)
@@ -60,6 +65,10 @@ module Yahtzee
 
   def find_triples(roll)
     dice_repeated(3, roll)
+  end
+
+  def find_quadruples(roll)
+    dice_repeated(4, roll)
   end
 
   def dice_repeated(times, roll)

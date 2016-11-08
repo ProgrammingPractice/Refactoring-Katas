@@ -70,4 +70,10 @@ class TddYahtzeeTest < Test::Unit::TestCase
     assert_equal 0, Yahtzee.three_of_a_kind([3,3,3,3,4])
     assert_equal 9, Yahtzee.three_of_a_kind([3,3,3,4,5])
   end
+
+  def test_four_of_a_kind
+    assert_equal 0, Yahtzee.four_of_a_kind([2,2,2,4,4])
+    assert_equal 0, Yahtzee.four_of_a_kind([2,2,2,2,2])
+    assert_equal 8, Yahtzee.four_of_a_kind([2,2,2,2,4])
+  end
 end
