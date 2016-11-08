@@ -35,12 +35,12 @@ module Yahtzee
 
   def pair(roll)
     pairs = find_pairs(roll)
-    pairs.empty? ? 0 : pairs[0]
+    pairs.empty? ? 0 : pairs.last * 2
   end
 
   def two_pairs(roll)
     pairs = find_pairs(roll)
-    pairs.size == 2 ? pairs[0] + pairs[1] : 0
+    pairs.size == 2 ? (pairs[0] + pairs[1]) * 2 : 0
   end
 
   private
@@ -50,15 +50,8 @@ module Yahtzee
   end
 
   def find_pairs(roll)
-    pairs = []
-
-    6.downto(1) do |i|
-      same_dice = roll.select { |e| e == i }
-      if same_dice.size == 2
-        pairs << 2 * i
-      end
+    (1..6).select do |i|
+      roll.count(i) == 2
     end
-
-    pairs
   end
 end
