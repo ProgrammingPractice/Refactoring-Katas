@@ -35,7 +35,7 @@ module Yahtzee
 
   def pair(roll)
     pairs = find_pairs(roll)
-    pairs.empty? ? 0 : pairs.last * 2
+    pairs.size >= 1 ? pairs.last * 2 : 0
   end
 
   def two_pairs(roll)
@@ -45,7 +45,7 @@ module Yahtzee
 
   def three_of_a_kind(roll)
     threes = find_threes(roll)
-    threes.size == 0 ? 0 : threes[0] * 3
+    threes.size == 1 ? threes[0] * 3 : 0
   end
 
   private
@@ -55,14 +55,16 @@ module Yahtzee
   end
 
   def find_pairs(roll)
-    (1..6).select do |i|
-      roll.count(i) == 2
-    end
+    dice_repeated(2, roll)
   end
 
   def find_threes(roll)
+    dice_repeated(3, roll)
+  end
+
+  def dice_repeated(times, roll)
     (1..6).select do |i|
-      roll.count(i) == 3
+      roll.count(i) == times
     end
   end
 end
