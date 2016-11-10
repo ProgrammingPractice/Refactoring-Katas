@@ -1,19 +1,19 @@
 class YahtzeeGame
-  def play
-    display_greeting
-    
-    1.times do
-    #   each_player do
-    #     play_round(player)
-          puts "Player 1's turn"
+  def self.play
+    players = ['Player 1']
+
+    puts 'Welcome to Yahtzee!'
+
+    1.times do # number of rounds
+      players.each do |player|
+          puts "#{player}'s turn"
           puts 'Press Enter to roll'
 
-          ARGF.readline
+          # ARGF.readline
 
           roll = [1,2,3,4,5]
 
           puts "You rolled: #{roll.inspect}"
-
 
           # choose what you keep
           # roll
@@ -22,13 +22,9 @@ class YahtzeeGame
           # choose category
           # score_roll(roll)
           # add roll points to total
-    #   end
+      end
     end
 
-    # display results
-  end
-
-  def display_greeting
-    puts 'Welcome to Yahtzee!'
+    puts 'The final score is: TODO'
   end
 end
