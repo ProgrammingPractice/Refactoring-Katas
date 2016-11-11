@@ -1,5 +1,5 @@
 class YahtzeeGame
-  CATHEGORIES = [
+  CATEGORIES = [
     'Chance',
     'Yahtzee',
     'Ones',
@@ -25,7 +25,7 @@ class YahtzeeGame
     rand(6) + 1
   end
 
-  def cathegories
-    CATHEGORIES
+  def categories
+    CATEGORIES
   end
 end

@@ -30,7 +30,7 @@ class YahtzeeGameTest < Minitest::Test
     end
   end
 
-  def test_cathegories_lists_all_the_cathegories
+  def test_categories_lists_all_the_categories
     expected = [
       'Chance',
       'Yahtzee',
@@ -49,6 +49,6 @@ class YahtzeeGameTest < Minitest::Test
       'Full house',
     ]
     game = YahtzeeGame.new
-    assert_equal expected, game.cathegories
+    assert_equal expected, game.categories
   end
 end
