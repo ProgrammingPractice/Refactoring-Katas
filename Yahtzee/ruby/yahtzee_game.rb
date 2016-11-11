@@ -1,4 +1,5 @@
 class YahtzeeGame
-  def self.play
+  def roll
+    [1,1,1,1,1]
   end
 end
