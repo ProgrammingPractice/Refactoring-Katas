@@ -29,4 +29,26 @@ class YahtzeeGameTest < Minitest::Test
       assert_equal 5, game.roll_one
     end
   end
+
+  def test_cathegories_lists_all_the_cathegories
+    expected = [
+      'Chance',
+      'Yahtzee',
+      'Ones',
+      'Twos',
+      'Threes',
+      'Fours',
+      'Fives',
+      'Sixes',
+      'Pair',
+      'Two pairs',
+      'Three of a kind',
+      'Four of a kind',
+      'Small straight',
+      'Large straight',
+      'Full house',
+    ]
+    game = YahtzeeGame.new
+    assert_equal expected, game.cathegories
+  end
 end
