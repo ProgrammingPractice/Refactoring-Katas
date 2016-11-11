@@ -9,6 +9,15 @@ class YahtzeeGameTest < Minitest::Test
     assert_equal 5, game.roll.size
   end
 
+  def test_roll_returns_a_roll_of_five_random_dice
+    game = YahtzeeGame.new
+    dice = [1,2,3,4,5]
+    fake_roll = -> { dice.shift }
+    game.stub(:roll_one, fake_roll) do
+      assert_equal [1,2,3,4,5], game.roll
+    end
+  end
+
   def test_roll_one_returns_a_valid_dice_value
     game = YahtzeeGame.new
     assert (1..6).include?(game.roll_one)

@@ -1,6 +1,6 @@
 class YahtzeeGame
   def roll
-    [1,1,1,1,1]
+    (1..5).map { roll_one }
   end
 
   def roll_one
