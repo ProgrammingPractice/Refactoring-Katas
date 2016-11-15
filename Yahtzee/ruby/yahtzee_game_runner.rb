@@ -14,6 +14,10 @@ def user_selects_category(game)
   3
 end
 
+def display_score(score)
+  puts "The score is #{score}"
+end
+
 game.roll_dice
 display_roll(game.roll)
 category = user_selects_category(game)
