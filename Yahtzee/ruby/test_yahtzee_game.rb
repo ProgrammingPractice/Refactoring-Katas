@@ -4,6 +4,29 @@ require 'minitest/autorun'
 require_relative 'yahtzee_game'
 
 class YahtzeeGameTest < Minitest::Test
+  def test_complete_round
+    skip
+    player_rolls([1,1,1,1,1])
+    player_selects_category('ones')
+    player_gets_score(5)
+  end
+
+  def player_rolls(roll)
+    @game = YahtzeeGame.new
+    fake_roll = -> { roll.shift }
+    @game.stub(:roll_one, fake_roll) do
+      @game.roll_dice
+    end
+  end
+
+  def player_selects_category(category)
+    @game.place_in_category_and_calculate_score(category)
+  end
+
+  def player_gets_score(expected)
+    assert_equal expected, @game.score
+  end
+
   def test_roll_dice_performs_a_roll_and_saves_it_on_the_game
     game = YahtzeeGame.new
     game.roll_dice
