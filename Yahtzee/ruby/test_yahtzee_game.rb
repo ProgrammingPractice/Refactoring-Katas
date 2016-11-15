@@ -4,16 +4,18 @@ require 'minitest/autorun'
 require_relative 'yahtzee_game'
 
 class YahtzeeGameTest < Minitest::Test
-  def test_roll_returns_a_roll_of_five_dice
+  def test_roll_dice_performs_a_roll_and_saves_it_on_the_game
     game = YahtzeeGame.new
+    game.roll_dice
     assert_equal 5, game.roll.size
   end
 
-  def test_roll_returns_a_roll_of_five_random_dice
+  def test_roll_dice_performs_a_random_roll
     game = YahtzeeGame.new
     dice = [1,2,3,4,5]
     fake_roll = -> { dice.shift }
     game.stub(:roll_one, fake_roll) do
+      game.roll_dice
       assert_equal [1,2,3,4,5], game.roll
     end
   end

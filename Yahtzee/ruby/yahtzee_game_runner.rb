@@ -14,7 +14,8 @@ def user_selects_category(game)
   3
 end
 
+game.roll_dice
 display_roll(game.roll)
 category = user_selects_category(game)
-game.place_in_category(category)
+game.place_in_category_and_calculate_score(category)
 display_score(game.score)

@@ -1,4 +1,6 @@
 class YahtzeeGame
+  attr_reader :roll
+
   CATEGORIES = [
     'Chance',
     'Yahtzee',
@@ -17,8 +19,8 @@ class YahtzeeGame
     'Full house'
   ]
 
-  def roll
-    (1..5).map { roll_one }
+  def roll_dice
+    @roll = (1..5).map { roll_one }
   end
 
   def roll_one
