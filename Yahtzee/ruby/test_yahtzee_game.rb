@@ -87,8 +87,19 @@ class YahtzeeGameTest < Minitest::Test
     end
   end
 
-  def test_initial_score_is_zero
+  def test_score_initially_is_zero
     game = YahtzeeGame.new
     assert_equal 0, game.score
+  end
+
+  def test_score_gets_updated_after_one_round
+    game = YahtzeeGame.new
+    dice = [1,2,3,4,5]
+    fake_roll = -> { dice.shift }
+    game.stub(:roll_one, fake_roll) do
+      game.roll_dice
+      game.place_in_category_and_calculate_score(0)
+      assert_equal 15, game.score
+    end
   end
 end

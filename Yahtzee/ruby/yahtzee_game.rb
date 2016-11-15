@@ -2,6 +2,7 @@ require_relative 'tdd_yahtzee'
 
 class YahtzeeGame
   attr_reader :roll
+  attr_reader :score
 
   CATEGORIES = [
     'Chance',
@@ -21,6 +22,10 @@ class YahtzeeGame
     'Full house'
   ]
 
+  def initialize
+    @score = 0
+  end
+
   def roll_dice
     @roll = (1..5).map { roll_one }
   end
@@ -34,10 +39,6 @@ class YahtzeeGame
   end
 
   def place_in_category_and_calculate_score(category)
-    Yahtzee.chance(roll)
-  end
-
-  def score
-    0
+    @score = Yahtzee.chance(roll)
   end
 end
