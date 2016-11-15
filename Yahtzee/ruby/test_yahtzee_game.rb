@@ -53,4 +53,14 @@ class YahtzeeGameTest < Minitest::Test
     game = YahtzeeGame.new
     assert_equal expected, game.categories
   end
+
+  def test_place_in_category_and_calculate_score
+    game = YahtzeeGame.new
+    dice = [1,2,3,4,5]
+    fake_roll = -> { dice.shift }
+    game.stub(:roll_one, fake_roll) do
+      game.roll_dice
+      assert_equal 15, game.place_in_category_and_calculate_score(0)
+    end
+  end
 end
