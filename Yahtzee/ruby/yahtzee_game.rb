@@ -39,6 +39,6 @@ class YahtzeeGame
   end
 
   def place_in_category_and_calculate_score(category)
-    @score = Yahtzee.chance(roll)
+    @score += Yahtzee.send(category, roll)
   end
 end

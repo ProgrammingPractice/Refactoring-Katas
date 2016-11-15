@@ -83,7 +83,7 @@ class YahtzeeGameTest < Minitest::Test
     fake_roll = -> { dice.shift }
     game.stub(:roll_one, fake_roll) do
       game.roll_dice
-      assert_equal 15, game.place_in_category_and_calculate_score(0)
+      assert_equal 15, game.place_in_category_and_calculate_score('chance')
     end
   end
 
@@ -98,8 +98,21 @@ class YahtzeeGameTest < Minitest::Test
     fake_roll = -> { dice.shift }
     game.stub(:roll_one, fake_roll) do
       game.roll_dice
-      game.place_in_category_and_calculate_score(0)
+      game.place_in_category_and_calculate_score('chance')
       assert_equal 15, game.score
+    end
+  end
+
+  def test_score_keeps_track_of_multiple_rounds
+    game = YahtzeeGame.new
+    dice = [1,2,3,4,5,1,1,1,1,1]
+    fake_roll = -> { dice.shift }
+    game.stub(:roll_one, fake_roll) do
+      game.roll_dice
+      game.place_in_category_and_calculate_score('chance')
+      game.roll_dice
+      game.place_in_category_and_calculate_score('yahtzee')
+      assert_equal 65, game.score
     end
   end
 end
