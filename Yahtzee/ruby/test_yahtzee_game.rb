@@ -63,4 +63,9 @@ class YahtzeeGameTest < Minitest::Test
       assert_equal 15, game.place_in_category_and_calculate_score(0)
     end
   end
+
+  def test_initial_score_is_zero
+    game = YahtzeeGame.new
+    assert_equal 0, game.score
+  end
 end

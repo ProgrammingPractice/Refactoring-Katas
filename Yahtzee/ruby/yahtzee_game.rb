@@ -36,4 +36,8 @@ class YahtzeeGame
   def place_in_category_and_calculate_score(category)
     Yahtzee.chance(roll)
   end
+
+  def score
+    0
+  end
 end
