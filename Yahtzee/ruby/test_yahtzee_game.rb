@@ -15,16 +15,35 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def test_complete_round
-    skip
     player_rolls([1,1,1,1,1])
     player_selects_category('ones')
     player_gets_score(5)
+  end
+
+  def test_complete_round_with_holding_dice_and_rerolling
+    skip
+    player_rolls([1,2,3,4,1])
+    player_holds([0,4])
+    player_rerolls([1,2,3]) # => [1,1,2,3,1]
+    player_holds([0,1,4])
+    player_rerolls([2,1])   # => [1,1,2,1,1]
+    player_selects_category('ones')
+    player_gets_score(4)
   end
 
   def player_rolls(roll)
     roller = FakeDiceRoller.new roll
     @game = YahtzeeGame.new(roller)
     @game.roll_dice
+  end
+
+  def player_holds(positions)
+    @hold_positions = positions
+  end
+
+  def player_rerolls(partial_roll)
+    # TODO: update fake roller with partial_roll
+    @game.reroll(@hold_positions)
   end
 
   def player_selects_category(category)
@@ -46,6 +65,14 @@ class YahtzeeGameTest < Minitest::Test
     game = YahtzeeGame.new(roller)
     game.roll_dice
     assert_equal [1,2,3,4,5], game.roll
+  end
+
+  def test_reroll_rolls_again_the_dice_in_the_specified_positions
+    roller = FakeDiceRoller.new [1,2,3,4,5,4,5,6]
+    game = YahtzeeGame.new(roller)
+    game.roll_dice
+    game.reroll([0,2,4])
+    assert_equal [4,2,5,4,6], game.roll
   end
 
   def test_categories_lists_all_the_categories

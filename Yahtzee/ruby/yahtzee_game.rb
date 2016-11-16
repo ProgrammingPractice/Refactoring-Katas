@@ -32,6 +32,12 @@ class YahtzeeGame
     @roll = (1..5).map { @dice_roller.roll_one }
   end
 
+  def reroll(positions)
+    positions.each do |position|
+      @roll[position] = @dice_roller.roll_one
+    end
+  end
+
   def categories
     CATEGORIES
   end
