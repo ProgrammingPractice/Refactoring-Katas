@@ -48,18 +48,6 @@ class YahtzeeGameTest < Minitest::Test
     assert_equal [1,2,3,4,5], game.roll
   end
 
-  def test_roll_one_returns_a_valid_dice_value
-    game = YahtzeeGame.new
-    assert (1..6).include?(game.roll_one)
-  end
-
-  def test_roll_one_returns_a_random_dice
-    game = YahtzeeGame.new
-    game.stub(:rand, 4) do
-      assert_equal 5, game.roll_one
-    end
-  end
-
   def test_categories_lists_all_the_categories
     expected = [
       'Chance',

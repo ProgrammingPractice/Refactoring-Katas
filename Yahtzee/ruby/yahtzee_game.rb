@@ -1,4 +1,5 @@
 require_relative 'tdd_yahtzee'
+require_relative 'dice_roller'
 
 class YahtzeeGame
   attr_reader :roll
@@ -22,17 +23,13 @@ class YahtzeeGame
     'Full house'
   ]
 
-  def initialize(dice_roller = self)
+  def initialize(dice_roller = DiceRoller.new)
     @score = 0
     @dice_roller = dice_roller
   end
 
   def roll_dice
     @roll = (1..5).map { @dice_roller.roll_one }
-  end
-
-  def roll_one
-    rand(6) + 1
   end
 
   def categories
