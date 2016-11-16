@@ -12,6 +12,10 @@ class YahtzeeGameTest < Minitest::Test
     def roll_one
       @values.shift
     end
+
+    def add_values(values)
+      @values.concat(values)
+    end
   end
 
   def test_complete_round
@@ -21,7 +25,6 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def test_complete_round_with_holding_dice_and_rerolling
-    skip
     player_rolls([1,2,3,4,1])
     player_holds([0,4])
     player_rerolls([1,2,3]) # => [1,1,2,3,1]
@@ -32,8 +35,8 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def player_rolls(roll)
-    roller = FakeDiceRoller.new roll
-    @game = YahtzeeGame.new(roller)
+    @roller = FakeDiceRoller.new roll
+    @game = YahtzeeGame.new(@roller)
     @game.roll_dice
   end
 
@@ -42,8 +45,9 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def player_rerolls(partial_roll)
-    # TODO: update fake roller with partial_roll
-    @game.reroll(@hold_positions)
+    @roller.add_values partial_roll
+    reroll_positions = [0,1,2,3,4] - @hold_positions
+    @game.reroll(reroll_positions)
   end
 
   def player_selects_category(category)
