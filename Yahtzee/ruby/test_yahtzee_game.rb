@@ -4,6 +4,16 @@ require 'minitest/autorun'
 require_relative 'yahtzee_game'
 
 class YahtzeeGameTest < Minitest::Test
+  class FakeDiceRoller
+    def initialize(values)
+      @values = values
+    end
+
+    def roll_one
+      @values.shift
+    end
+  end
+
   def test_complete_round
     skip
     player_rolls([1,1,1,1,1])
@@ -12,11 +22,9 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def player_rolls(roll)
-    @game = YahtzeeGame.new
-    fake_roll = -> { roll.shift }
-    @game.stub(:roll_one, fake_roll) do
-      @game.roll_dice
-    end
+    roller = FakeDiceRoller.new roll
+    @game = YahtzeeGame.new(roller)
+    @game.roll_dice
   end
 
   def player_selects_category(category)
@@ -34,13 +42,10 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def test_roll_dice_performs_a_random_roll
-    game = YahtzeeGame.new
-    dice = [1,2,3,4,5]
-    fake_roll = -> { dice.shift }
-    game.stub(:roll_one, fake_roll) do
-      game.roll_dice
-      assert_equal [1,2,3,4,5], game.roll
-    end
+    roller = FakeDiceRoller.new [1,2,3,4,5]
+    game = YahtzeeGame.new(roller)
+    game.roll_dice
+    assert_equal [1,2,3,4,5], game.roll
   end
 
   def test_roll_one_returns_a_valid_dice_value
@@ -78,13 +83,10 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def test_place_in_category_and_calculate_score
-    game = YahtzeeGame.new
-    dice = [1,2,3,4,5]
-    fake_roll = -> { dice.shift }
-    game.stub(:roll_one, fake_roll) do
-      game.roll_dice
-      assert_equal 15, game.place_in_category_and_calculate_score('chance')
-    end
+    roller = FakeDiceRoller.new [1,2,3,4,5]
+    game = YahtzeeGame.new(roller)
+    game.roll_dice
+    assert_equal 15, game.place_in_category_and_calculate_score('chance')
   end
 
   def test_score_initially_is_zero
@@ -93,26 +95,20 @@ class YahtzeeGameTest < Minitest::Test
   end
 
   def test_score_gets_updated_after_one_round
-    game = YahtzeeGame.new
-    dice = [1,2,3,4,5]
-    fake_roll = -> { dice.shift }
-    game.stub(:roll_one, fake_roll) do
-      game.roll_dice
-      game.place_in_category_and_calculate_score('chance')
-      assert_equal 15, game.score
-    end
+    roller = FakeDiceRoller.new [1,2,3,4,5]
+    game = YahtzeeGame.new(roller)
+    game.roll_dice
+    game.place_in_category_and_calculate_score('chance')
+    assert_equal 15, game.score
   end
 
   def test_score_keeps_track_of_multiple_rounds
-    game = YahtzeeGame.new
-    dice = [1,2,3,4,5,1,1,1,1,1]
-    fake_roll = -> { dice.shift }
-    game.stub(:roll_one, fake_roll) do
-      game.roll_dice
-      game.place_in_category_and_calculate_score('chance')
-      game.roll_dice
-      game.place_in_category_and_calculate_score('yahtzee')
-      assert_equal 65, game.score
-    end
+    roller = FakeDiceRoller.new [1,2,3,4,5,1,1,1,1,1]
+    game = YahtzeeGame.new(roller)
+    game.roll_dice
+    game.place_in_category_and_calculate_score('chance')
+    game.roll_dice
+    game.place_in_category_and_calculate_score('yahtzee')
+    assert_equal 65, game.score
   end
 end

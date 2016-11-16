@@ -22,12 +22,13 @@ class YahtzeeGame
     'Full house'
   ]
 
-  def initialize
+  def initialize(dice_roller = self)
     @score = 0
+    @dice_roller = dice_roller
   end
 
   def roll_dice
-    @roll = (1..5).map { roll_one }
+    @roll = (1..5).map { @dice_roller.roll_one }
   end
 
   def roll_one
